@@ -1,17 +1,20 @@
 defmodule UeberauthLinkedin.Mixfile do
   use Mix.Project
 
-  @url "https://github.com/fajarmf/ueberauth_linkedin"
+  @url "https://github.com/HiredHippo/ueberauth_linkedin"
+  @name "Ueberauth LinkedIn Strategy"
+  @description "An Ueberauth strategy for LinkedIn authentication"
+  @maintainers ["John Goff"]
 
   def project do
     [app: :ueberauth_linkedin,
      version: "0.3.2",
-     name: "Ueberauth LinkedIn Strategy",
+     name: @name,
      elixir: "~> 1.2",
      package: package(),
      source_url: @url,
      homepage_url: @url,
-     description: description(),
+     description: @description,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps(),
@@ -33,10 +36,6 @@ defmodule UeberauthLinkedin.Mixfile do
     ["README.md"]
   end
 
-  defp description do
-    "An Ueberauth strategy for LinkedIn authentication"
-  end
-
   defp deps do
     [{:ueberauth, "~> 0.3"},
      {:oauth2, "~> 2.0"},
@@ -46,7 +45,7 @@ defmodule UeberauthLinkedin.Mixfile do
 
   defp package do
     [files: ["lib", "mix.exs", "README.md", "LICENSE"],
-      maintainers: ["Fajar Firdaus"],
+      maintainers: @maintainers,
       licenses: ["MIT"],
       links: %{"Github": @url}]
   end
