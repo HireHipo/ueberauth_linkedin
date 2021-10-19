@@ -1,3 +1,6 @@
+# Unreleased
+* Require at least Ueberauth 0.7 due to changed CSRF handling
+
 # v 0.3.2
 * Fix issues related to OAuth2 flow
 

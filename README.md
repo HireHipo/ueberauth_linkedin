@@ -77,11 +77,11 @@ For an example implementation see the [Überauth Example](https://github.com/ueb
 
 Depending on the configured url you can initiate the request through:
 
-    /auth/linkedin?state=csrf_token_here
+    /auth/linkedin
 
 Or with scope:
 
-    /auth/linkedin?state=csrf_token_here&scope=r_emailaddress
+    /auth/linkedin?scope=r_emailaddress
 
 By default the requested scope is "r_liteprofile r_emailaddress". Scope can be configured either explicitly as a `scope` query value on the request path or in your configuration:
 
