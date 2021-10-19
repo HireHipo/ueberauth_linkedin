@@ -7,18 +7,20 @@ defmodule UeberauthLinkedin.Mixfile do
   @maintainers ["John Goff"]
 
   def project do
-    [app: :ueberauth_linkedin,
-     version: "0.3.2",
-     name: @name,
-     elixir: "~> 1.2",
-     package: package(),
-     source_url: @url,
-     homepage_url: @url,
-     description: @description,
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps(),
-     docs: docs()]
+    [
+      app: :ueberauth_linkedin,
+      version: "0.3.2",
+      name: @name,
+      elixir: "~> 1.2",
+      package: package(),
+      source_url: @url,
+      homepage_url: @url,
+      description: @description,
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      deps: deps(),
+      docs: docs()
+    ]
   end
 
   # Configuration for the OTP application
@@ -37,16 +39,20 @@ defmodule UeberauthLinkedin.Mixfile do
   end
 
   defp deps do
-    [{:ueberauth, "~> 0.3"},
-     {:oauth2, "~> 2.0"},
-     {:earmark, "~> 1.3", only: :dev},
-     {:ex_doc, "~> 0.21", only: :dev}]
+    [
+      {:ueberauth, "~> 0.3"},
+      {:oauth2, "~> 2.0"},
+      {:earmark, "~> 1.3", only: :dev},
+      {:ex_doc, "~> 0.21", only: :dev}
+    ]
   end
 
   defp package do
-    [files: ["lib", "mix.exs", "README.md", "LICENSE"],
+    [
+      files: ["lib", "mix.exs", "README.md", "LICENSE"],
       maintainers: @maintainers,
       licenses: ["MIT"],
-      links: %{"Github": @url}]
+      links: %{Github: @url}
+    ]
   end
 end
