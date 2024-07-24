@@ -150,7 +150,13 @@ defmodule Ueberauth.Strategy.LinkedIn do
       when status_code in 200..399 ->
         put_private(conn, :linkedin_primary_contact, primary_contact)
 
-      {:error, %OAuth2.Error{reason: reason}} ->
+      {_err, %OAuth2.Response{status_code: 401, body: _body}} ->
+        set_errors!(conn, [error("token", "unauthorized")])
+
+      {_err, %OAuth2.Response{status_code: 403, body: body}} ->
+        set_errors!(conn, [error("token", body.message)])
+
+      {_err, %OAuth2.Error{reason: reason}} ->
         set_errors!(conn, [error("OAuth2", reason)])
     end
   end
