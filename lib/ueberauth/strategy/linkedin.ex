@@ -52,9 +52,13 @@ defmodule Ueberauth.Strategy.LinkedIn do
 
   @doc false
   def handle_cleanup!(conn) do
-    conn
-    |> put_private(:linkedin_user, nil)
-    |> put_private(:linkedin_token, nil)
+    new_private_area =
+      conn.private
+      |> Map.delete(:linkedin_user)
+      |> Map.delete(:linkedin_token)
+      |> Map.delete(:linkedin_primary_contact)
+
+    %{conn | private: new_private_area}
   end
 
   @doc """
